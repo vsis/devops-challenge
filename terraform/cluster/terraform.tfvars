@@ -34,18 +34,3 @@ pools_map = {
     }
   }
 }
-
-k8s_namespaces = {
-  apps = {
-    labels      = {}
-    annotations = {}
-  }
-  cert-manager = {
-    labels      = {}
-    annotations = {}
-  }
-}
-
-timezone = "Europe/Madrid"
-
-region = "europe-southwest1"  # zones defined in pools_map are from this region

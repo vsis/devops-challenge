@@ -21,14 +21,6 @@ variable "pools_map" {
   }))
 }
 
-variable "k8s_namespaces" {
-  type = map(object({
-    labels      = map(string)
-    annotations = map(string)
-  }))
-  default = {}
-}
-
 variable "subnets" {
   type = object({
     nodes    = string
@@ -40,7 +32,6 @@ variable "subnets" {
 variable "region" {
   default = "europe-southwest1"
 }
-
 
 resource "random_id" "suffix" {
   byte_length = 4
@@ -163,15 +154,5 @@ resource "google_container_node_pool" "pool" {
   lifecycle {
     create_before_destroy = true
     ignore_changes        = [initial_node_count]
-  }
-}
-
-resource "kubernetes_namespace" "namespace" {
-  for_each = var.k8s_namespaces
-
-  metadata {
-    name        = each.key
-    labels      = each.value.labels
-    annotations = each.value.annotations
   }
 }

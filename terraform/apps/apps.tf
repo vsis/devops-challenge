@@ -22,7 +22,7 @@ data "http" "time" {
 }
 
 resource "helm_release" "app1" {
-  chart = "../app1"
+  chart = "../../app1"
   name  = "app1"
 
   set {
