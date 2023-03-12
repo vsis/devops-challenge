@@ -27,7 +27,7 @@ resource "helm_release" "app1" {
 
   set {
     name  = "time"
-    value = jsonencode(data.http.time.response_body)["time"]
+    value = jsondecode(data.http.time.response_body).time # we actually want to decode json here
   }
 
   set {

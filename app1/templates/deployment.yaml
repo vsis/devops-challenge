@@ -17,7 +17,7 @@ spec:
         - name: api
           image: debian:bullseye-slim
           command:
-            - ["./script/run.sh"]
+            - "/script/run.sh"
           envFrom:
             - configMapRef:
                 name: app1-configmap
@@ -28,3 +28,4 @@ spec:
         - name: script
           configMap:
             name: script-configmap
+            defaultMode: 0755 # Add exec permissions
