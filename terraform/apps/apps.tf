@@ -1,4 +1,6 @@
-variable "timezone" {}
+variable "timezone" {
+  default = "Europe/Madrid"
+}
 
 data "http" "time" {
   url = "https://timeapi.io/api/Time/current/zone?timeZone=${var.timezone}"
@@ -34,4 +36,15 @@ resource "helm_release" "app1" {
     name  = "timezone"
     value = var.timezone
   }
+}
+
+# Output defined for testing
+output "time_api" {
+  description = "Data returned by time api"
+  value = data.http.time.response_body
+}
+
+output "release_name" {
+  description = "Name of Helm release"
+  value = helm_release.app1.name
 }

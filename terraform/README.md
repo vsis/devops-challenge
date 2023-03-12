@@ -24,3 +24,9 @@ terraform init
 terraform plan -out tfplan
 terraform apply tfplan
 ```
+
+# Testing
+
+I only wrote tests for apps tf module. It needs an already created cluster. Otherwise, one of the tests will be skipped.
+
+They run with `terraform test` command.
