@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-test-variables"
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: "{{ .Release.Name }}-test-variables"
+      image: debian:bullseye-slim
+      command:
+        - 'sh'
+      args:
+        - -c
+        - 'if [ -n "$TIME" ] && [ -n "$TIMEZONE" ]; then echo variables OK; else Error: echo One or more needed variables not defined; fi'
+      envFrom:
+        - configMapRef:
+            name: app1-configmap
+  restartPolicy: Never
