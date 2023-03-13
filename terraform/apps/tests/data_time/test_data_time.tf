@@ -10,7 +10,7 @@ terraform {
   }
 }
 
-module main {
+module "main" {
   source = "../.."
 }
 

@@ -38,15 +38,15 @@ resource "random_id" "suffix" {
 }
 
 resource "google_compute_subnetwork" "nodes" {
-  project = var.project_id
+  project       = var.project_id
   ip_cidr_range = var.subnets["nodes"]
   name          = "nodes"
   network       = google_compute_network.network.id
 }
 
 resource "google_compute_network" "network" {
-  name    = var.network_name
-  project = var.project_id
+  name                    = var.network_name
+  project                 = var.project_id
   auto_create_subnetworks = "false" # Avoid creating unused subnetworks
 }
 

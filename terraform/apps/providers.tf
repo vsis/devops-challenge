@@ -13,7 +13,7 @@ terraform {
       version = "2.8.0"
     }
     http = {
-      source = "hashicorp/http"
+      source  = "hashicorp/http"
       version = "3.2.1" # Freeze this version
     }
   }

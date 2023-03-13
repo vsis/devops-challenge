@@ -6,7 +6,7 @@ terraform {
   }
 }
 
-module main {
+module "main" {
   source = "../.."
 }
 
@@ -14,9 +14,9 @@ resource "test_assertions" "name_is_app1" {
   component = "name_is_app1"
 
   equal "release_name" {
-     description = "Release name is app1"
-     got = module.main.release_name
-     want = "app1"
+    description = "Release name is app1"
+    got         = module.main.release_name
+    want        = "app1"
   }
 }
 

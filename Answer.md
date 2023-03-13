@@ -1,3 +1,9 @@
+# Before to run
+
+I used `terraform/cluster/providers.tf` and `terraform/apps/providers.tf` files to define a GCP backend for tfstate.
+
+Before to run, an apropiate bucket and project id should be defined.
+
 # How to run
 
 First, create the cluster
@@ -13,7 +19,7 @@ Then, get cluster credentials
 gcloud container clusters get-credentials production --zone=europe-southwest
 ```
 
-Then, tests app tfmodule and create namespace and helm release
+Then, tests `apps` tfmodule and create namespaces and helm release
 
 ```
 cd ../apps

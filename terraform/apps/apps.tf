@@ -41,10 +41,10 @@ resource "helm_release" "app1" {
 # Output defined for testing
 output "time_api" {
   description = "Data returned by time api"
-  value = data.http.time.response_body
+  value       = data.http.time.response_body
 }
 
 output "release_name" {
   description = "Name of Helm release"
-  value = helm_release.app1.name
+  value       = helm_release.app1.name
 }
